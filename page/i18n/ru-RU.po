@@ -1,0 +1,20 @@
+msgid "Stations"
+msgstr "Остановки"
+
+msgid "Add or remove stations from Zepp application on your phone."
+msgstr "Добавить или удалить остановки можно через приложение Zepp на телефоне."
+
+msgid "Font size..."
+msgstr "Размер текста..."
+
+msgid "Now at"
+msgstr "Сейчас на"
+
+msgid "min."
+msgstr "мин."
+
+msgid "Near"
+msgstr "Прибывает"
+
+msgid "Nothing to show. Looks like this station is closed for nwo."
+msgstr "Ничего нет. Скорее всего эта остановка сейчас закрыта."

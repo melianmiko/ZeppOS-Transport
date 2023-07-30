@@ -1,0 +1,35 @@
+msgid "Current city"
+msgstr "Текущий город"
+
+msgid "Links"
+msgstr "Ссылки"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Start typing station name in search to add them"
+msgstr "Начините набирать название остановки для добавления"
+
+msgid "Select city..."
+msgstr "Выбрать город..."
+
+msgid "Loading..."
+msgstr "Загрузка..."
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Stations"
+msgstr "Остановки"
+
+msgid "Like this application? Consider to support their development with a small donation: "
+msgstr "Нравится это приложение? Рассмотрите возможность поддержать его материально: "
+
+msgid "Source code available: "
+msgstr "Исходный код доступен: "
