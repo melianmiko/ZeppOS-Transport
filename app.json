@@ -138,6 +138,29 @@
         }
       ]
     },
+    "bip-5": {
+      "platforms": [
+        {
+          "name": "bip-5",
+          "deviceSource": 8454401
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
     "t-rex-ultra": {
       "platforms": [
         {
