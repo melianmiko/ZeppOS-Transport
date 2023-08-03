@@ -27,7 +27,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -86,7 +88,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -113,7 +117,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -150,7 +156,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -177,7 +185,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -204,7 +214,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -221,7 +233,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -258,7 +272,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -285,7 +301,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -312,7 +330,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -339,7 +359,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -370,7 +392,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -397,7 +421,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -424,7 +450,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {
@@ -451,7 +479,9 @@
           "pages": [
             "page/HomeScreen",
             "page/ViewStation",
-            "page/FontSizeSetupScreen"
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
           ]
         },
         "app-side": {

@@ -6,10 +6,14 @@ import os
 project = Path(".").resolve()
 common_assets = project / "assets" / "common"
 
+low_ram_targets = ["band-7", "mi-band-7"]
+
 pages = [
     "HomeScreen",
     "ViewStation",
-    "FontSizeSetupScreen"
+    "FontSizeSetupScreen",
+    "AboutScreen",
+    "DonateScreen",
 ]
 
 module = {
@@ -34,15 +38,20 @@ for target_id in app_json["targets"]:
 
   # Misc files
   shutil.copy(common_assets / "icon.png", assets_dir / "icon.png")
-  shutil.copy(common_assets / "spinner.png", assets_dir / "spinner.png")
 
   # Icons
-  icon_size = 32
-  if target_id in ["band-7", "mi-band-7"]:
-      icon_size = 24
+  if target_id in low_ram_targets:
+    icon_size = 24
+    shutil.copy(common_assets / "qr_small.png", assets_dir / "donate.png")
+    shutil.copy(common_assets / "spinner.png", assets_dir / "spinner.png")
+  else:
+    icon_size = 32
+    shutil.copy(common_assets / "qr_normal.png", assets_dir / "donate.png")
+    shutil.copytree(common_assets / "spinner", assets_dir / "spinner")
 
   shutil.copytree(common_assets / str(icon_size) / "stations", assets_dir / "stations")
   shutil.copy(common_assets / str(icon_size) / "fontSize.png", assets_dir / "fontSize.png")
+  shutil.copy(common_assets / str(icon_size) / "about.png", assets_dir / "about.png")
 
   # App.json
   app_json["targets"][target_id]["module"] = {

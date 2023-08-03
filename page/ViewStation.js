@@ -1,6 +1,7 @@
 import {ListScreen} from "../lib/mmk/ListScreen";
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../lib/mmk/UiParams";
 import {gettext as t} from "i18n";
+import {createSpinner} from "../lib/Utils";
 
 const { config, messageBuilder } = getApp()._options.globalData
 
@@ -20,11 +21,7 @@ class StationInfoScreen extends ListScreen {
         hmSetting.setBrightScreen(15);
 
         this.id = data.id;
-        this.spinner = hmUI.createWidget(hmUI.widget.IMG, {
-            x: (SCREEN_WIDTH - 48) / 2,
-            y: (SCREEN_HEIGHT - 48) / 2,
-            src: "spinner.png"
-        });
+        this.deleteSpinner = createSpinner();
 
         messageBuilder.request({
             action: "get_station_info",
@@ -37,14 +34,24 @@ class StationInfoScreen extends ListScreen {
 
     buildUI(data) {
         this.fetchedAt = Date.now();
-        hmUI.deleteWidget(this.spinner);
+        this.deleteSpinner();
         for(const row of data)
             this.buildRow(row);
 
-        if(data.length === 0)
-            this.text({
-                text: t("Nothing to show. Looks like this station is closed for nwo.")
-            })
+        if(data.length === 0) {
+            hmUI.createWidget(hmUI.widget.TEXT, {
+                x: 0,
+                y: 0,
+                w: SCREEN_WIDTH,
+                h: SCREEN_HEIGHT,
+                color: 0xDDDDDD,
+                text_size: this.fontSize,
+                text_style: hmUI.text_style.WRAP,
+                align_h: hmUI.align.CENTER_H,
+                align_v: hmUI.align.CENTER_V,
+                text: t("Nothing to show. Looks like this station is closed for nwo."),
+            });
+        }
 
         timer.createTimer(0, 5000, () => {
             if(Date.now() - this.fetchedAt > 60000)

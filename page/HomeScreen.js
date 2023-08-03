@@ -1,6 +1,6 @@
 import {gettext as t} from "i18n";
 import {ListScreen} from "../lib/mmk/ListScreen";
-import {SCREEN_HEIGHT, SCREEN_WIDTH, WIDGET_WIDTH} from "../lib/mmk/UiParams";
+import {createSpinner} from "../lib/Utils";
 
 const {config, messageBuilder} = getApp()._options.globalData
 
@@ -8,17 +8,14 @@ class HomeScreen extends ListScreen {
     constructor() {
         super();
         this.fontSize = config.get("fontSize", this.fontSize);
+        this.accentColor = 0x673AB7;
     }
 
     start() {
         hmSetting.setBrightScreen(30);
-        hmUI.updateStatusBarTitle(t("Stations"));
+        hmUI.updateStatusBarTitle(t("Transport"));
 
-        this.spinner = hmUI.createWidget(hmUI.widget.IMG, {
-            x: (SCREEN_WIDTH - 48) / 2,
-            y: (SCREEN_HEIGHT - 48) / 2,
-            src: "spinner.png"
-        });
+        this.deleteSpinner = createSpinner();
 
         messageBuilder.request({
             action: "get_stations"
@@ -28,7 +25,24 @@ class HomeScreen extends ListScreen {
     }
 
     buildUI(rows) {
-        hmUI.deleteWidget(this.spinner);
+        this.deleteSpinner();
+
+        this.row({
+            icon: "about.png",
+            text: t("About..."),
+            callback: () => hmApp.gotoPage({
+                url: "page/AboutScreen",
+            })
+        })
+        this.row({
+            icon: "fontSize.png",
+            text: t("Font size..."),
+            callback: () => hmApp.gotoPage({
+                url: "page/FontSizeSetupScreen",
+            })
+        })
+        this.headline(t("Stations"));
+
         for (const row of rows) {
             this.displayRow(row);
         }
@@ -39,14 +53,6 @@ class HomeScreen extends ListScreen {
             fontSize: this.fontSize - 4,
             bottomOffset: 32,
             color: 0xAAAAAA,
-        })
-
-        this.row({
-            icon: "fontSize.png",
-            text: t("Font size..."),
-            callback: () => hmApp.gotoPage({
-                url: "page/FontSizeSetupScreen",
-            })
         })
 
         this.offset();
