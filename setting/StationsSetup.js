@@ -59,7 +59,8 @@ function AvailableStations(settingsStorage) {
         color: "#C8E6C9",
         action: t("Add"),
         onClick: () => {
-            const stations = JSON.parse(settingsStorage.getItem("stations"));
+            let stations = JSON.parse(settingsStorage.getItem("stations"));
+            if(!stations) stations = [];
             stations.push(row);
             settingsStorage.setItem("stations", JSON.stringify(stations));
         }
