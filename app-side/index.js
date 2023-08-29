@@ -3,15 +3,20 @@ import {MessageBuilder} from "../lib/zeppos/message";
 
 const messageBuilder = new MessageBuilder();
 const TEMPORARY_KEYS = [
-    "available_cities",
-    "available_stations",
-    "stations_query"
+  "stations_query",
+  "rq_cities_load",
+  "available_cities",
+  "available_stations",
 ]
 
 class SideServiceHandler {
   constructor() {
     this.dbCitites = {};
     this.dbStations = null;
+
+    let showMode = settings.settingsStorage.getItem("location_show_mode");
+    showMode = !showMode ? "current" : JSON.parse(showMode);
+    this.locationShowMode = showMode;
   }
 
   start() {
@@ -74,11 +79,17 @@ class SideServiceHandler {
       output.push({
         name,
         est: row.arrt,
-        where: row.where,
+        goesTo: row.where,
+        current: row.last,
       });
     }
 
-    ctx.response({data: output});
+    ctx.response({
+      data: {
+        routes: output,
+        showMode: this.locationShowMode,
+      },
+    });
   }
 
   async setupIdentifiers() {
@@ -102,19 +113,18 @@ class SideServiceHandler {
     switch(key) {
       case "selected_city":
         return this.handleCityChange(newValue === oldValue);
-      case "available_cities":
+      case "rq_cities_load":
         return this.updateCitiesList(newValue);
       case "stations_query":
         return this.queryStations(newValue);
-      case "stations":
-        // Re-query
-        return this.queryStations(settings.settingsStorage.getItem("stations_query"));
+      case "location_show_mode":
+        this.locationShowMode = JSON.parse(newValue);
     }
   }
 
   async updateCitiesList(newValue) {
-    if(newValue !== "[]") return;
-    console.log("Load list of cities...");
+    if(newValue !== "1") return;
+    console.log("Load list of cities...", newValue);
 
     const data = await this.get("https://api9.bus62.ru/getAllCities.php");
     const availableCities = [];
@@ -128,6 +138,7 @@ class SideServiceHandler {
     }
 
     settings.settingsStorage.setItem("available_cities", JSON.stringify(availableCities));
+    settings.settingsStorage.setItem("rq_cities_load", "2")
     console.log("Cities list ready");
   }
 
@@ -141,11 +152,11 @@ class SideServiceHandler {
 
   async queryStations(query) {
     if(!this.dbStations) await this.fetchStations();
-    query = query.toLowerCase();
+    query = JSON.parse(query).toLowerCase();
 
     const available = [];
     if(query) {
-      console.log("Querying stations from db...")
+      console.log("Querying stations from db...", query);
       const saved = this.getSavedStationIDS();
       for(const row of this.dbStations) {
         if(row.name.toLowerCase().indexOf(query) < 0) continue;
@@ -155,6 +166,7 @@ class SideServiceHandler {
     }
 
     settings.settingsStorage.setItem("available_stations", JSON.stringify(available));
+    console.log("Set", "available_stations", available);
   }
 
   async fetchStations() {

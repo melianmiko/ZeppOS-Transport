@@ -22,13 +22,16 @@ class StationInfoScreen extends ListScreen {
 
         this.id = data.id;
         this.deleteSpinner = createSpinner();
+        this.locationShowMode = "current";
 
         messageBuilder.request({
             action: "get_station_info",
             id: data.id
         }).then((d) => {
-            console.log(d);
-            this.buildUI(d);
+            this.locationShowMode = d.showMode;
+            this.buildUI(d.routes);
+        }).catch((e) => {
+            console.log(e);
         })
     }
 
@@ -64,6 +67,18 @@ class StationInfoScreen extends ListScreen {
         this.offset();
     }
 
+    getBusLocation(row) {
+        console.log(this.locationShowMode);
+        switch(this.locationShowMode) {
+            case "full":
+                return t("Behind") + " " + row.current + " " + t("and") + " " + row.goesTo;
+            case "goesTo":
+                return t("Goes to") + " " + row.goesTo;
+            default: // current
+                return t("Now at") + " " + row.current;
+        }
+    }
+
     buildRow(row) {
         let est = Math.floor(row.est / 60);
         est = est < 1 ? t("Near")  : est + " " + t("min.");
@@ -73,7 +88,7 @@ class StationInfoScreen extends ListScreen {
             text: String(est),
         });
         this.text({
-            text: t("Now at") + " " + row.where,
+            text: this.getBusLocation(row),
             color: 0x999999,
             fontSize: this.fontSize - 4,
             topOffset: -16,

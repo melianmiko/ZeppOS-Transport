@@ -7,8 +7,8 @@ msgstr "Ссылки"
 msgid "Search"
 msgstr "Поиск"
 
-msgid "Start typing station name in search to add them"
-msgstr "Начините набирать название остановки для добавления"
+msgid "Start typing station name in search to add them."
+msgstr "Начините набирать название остановки для добавления."
 
 msgid "Select city..."
 msgstr "Выбрать город..."
@@ -21,6 +21,9 @@ msgstr "Изменить"
 
 msgid "Add"
 msgstr "Добавить"
+
+msgid "Added"
+msgstr "Добавлено"
 
 msgid "Delete"
 msgstr "Удалить"

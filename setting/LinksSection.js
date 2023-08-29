@@ -1,6 +1,6 @@
 import {gettext as t} from "i18n";
-import {Paragraph2} from "./ui/Paragraph";
-import {Header} from "./ui/Header";
+import {TextRoot} from "../lib/mmk/setting/Layout";
+import {Link, Paragraph, Title} from "../lib/mmk/setting/Typography";
 
 export const URL_TO_COPY = {
   style: {
@@ -11,15 +11,15 @@ export const URL_TO_COPY = {
 }
 
 export function LinksSection() {
-    return [
-        Header(t("Links")),
-        Paragraph2([
-            Text({}, t("Like this application? Consider to support their development with a small donation: ")),
-            Text(URL_TO_COPY, "https://mmk.pw/donate")
+    return TextRoot([
+        Title(t("Links")),
+        Paragraph([
+            t("Like this application? Consider to support their development with a small donation: "),
+            Link("https://mmk.pw/donate"),
         ]),
-        Paragraph2([
-            Text({}, t("Source code available: ")),
-            Text(URL_TO_COPY, "https://github.com/melianmiko/ZeppOS-Transport")
+        Paragraph([
+            t("Source code available: "),
+            Link("https://github.com/melianmiko/ZeppOS-Transport"),
         ]),
-    ]
+    ])
 }
