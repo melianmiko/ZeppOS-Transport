@@ -24,8 +24,8 @@ export function StationsSetup(ctx) {
     return View({}, [
         ReplaceCityButton(ctx),
         TextRoot([
-            Title("Stations"),
-            Paragraph("On this page, you can configure your favorite stations that will be available in Transport on your smartwatch.")
+            Title(t("Stations")),
+            Paragraph(t("On this page, you can configure your favorite stations that will be available in Transport on your smartwatch."))
         ]),
         FloatingActionButton(ADD_32, () => setNewPaneVisible(true), 64),
         BottomSheet(newPaneVisible, () => setNewPaneVisible(false), [

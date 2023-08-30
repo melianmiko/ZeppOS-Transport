@@ -157,10 +157,8 @@ class SideServiceHandler {
     const available = [];
     if(query) {
       console.log("Querying stations from db...", query);
-      const saved = this.getSavedStationIDS();
       for(const row of this.dbStations) {
         if(row.name.toLowerCase().indexOf(query) < 0) continue;
-        if(saved.indexOf(row.id) > -1) continue;
         available.push(row);
       }
     }

@@ -17,7 +17,7 @@ export function AppSettingsPane(ctx) {
 
     return [
         TextRoot([
-            Title(t("Bus location display mode:"))
+            Title(t("Bus location display mode"))
         ]),
         RadioListItem(t("Between ... and ..."), locMode === "full", () => setLocMode("full")),
         RadioListItem(t("Goes to ..."), locMode === "goesTo", () => setLocMode("goesTo")),

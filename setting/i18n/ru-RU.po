@@ -50,7 +50,7 @@ msgid "Delete"
 msgstr "Удалить"
 
 msgid "Bus location display mode"
-msgstr "Как отображать текущее местоположение"
+msgstr "Как отображать текущее положение транспорта"
 
 msgid "Between ... and ..."
 msgstr "Между ... и ..."

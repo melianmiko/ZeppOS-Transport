@@ -24,7 +24,7 @@ export function StationAddButton(alreadyAdded) {
         style: {
             margin: "8px",
             display: "block",
-            width: "64px",
+            width: "80px",
             textAlign: "center",
             color: "#444",
         }
@@ -35,6 +35,7 @@ export function StationAddButton(alreadyAdded) {
         style: {
             margin: "8px",
             boxShadow: "none",
+            width: "80px",
             padding: "0px",
             backgroundColor: "#C8E6C9",
             color: "#000000",
