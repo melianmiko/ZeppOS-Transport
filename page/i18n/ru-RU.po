@@ -16,6 +16,15 @@ msgstr "Добавить или удалить остановки можно ч�
 msgid "Font size..."
 msgstr "Размер текста..."
 
+msgid "Between"
+msgstr "Между"
+
+msgid "and"
+msgstr "и"
+
+msgid "Goes to"
+msgstr "В пути к"
+
 msgid "Now at"
 msgstr "Сейчас на"
 

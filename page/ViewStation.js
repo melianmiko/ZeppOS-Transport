@@ -71,7 +71,7 @@ class StationInfoScreen extends ListScreen {
         console.log(this.locationShowMode);
         switch(this.locationShowMode) {
             case "full":
-                return t("Behind") + " " + row.current + " " + t("and") + " " + row.goesTo;
+                return t("Between") + " " + row.current + " " + t("and") + " " + row.goesTo;
             case "goesTo":
                 return t("Goes to") + " " + row.goesTo;
             default: // current

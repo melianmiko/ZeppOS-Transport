@@ -1,23 +1,44 @@
-msgid "Current city"
-msgstr "Текущий город"
+msgid "Click here to close popup"
+msgstr "Коснитесь тут, чтобы закрыть это окно"
+
+msgid "Stations"
+msgstr "Остановки"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "About"
+msgstr "Справка"
+
+msgid "Select your city to begin"
+msgstr "Выберите ваш город, чтобы начать"
+
+msgid "We need to know them to show available stations."
+msgstr "Нам нужно знать его, чтоб загрузить список остановок."
 
 msgid "Links"
 msgstr "Ссылки"
 
-msgid "Search"
-msgstr "Поиск"
+msgid "Select city"
+msgstr "Выбрать город"
+
+msgid "On this page, you can configure your favorite stations that will be available in Transport on your smartwatch."
+msgstr "На этой странице вы можете выбрать, какие остановки будут доступны в приложении Транспорт на ваших часах."
+
+msgid "Click here to add your first station"
+msgstr "Нажмите сюда, чтобы добавить первую остановку"
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "Add station..."
+msgstr "Добавить остановку..."
 
 msgid "Start typing station name in search to add them."
 msgstr "Начините набирать название остановки для добавления."
 
-msgid "Select city..."
-msgstr "Выбрать город..."
-
-msgid "Loading..."
-msgstr "Загрузка..."
-
-msgid "Change"
-msgstr "Изменить"
+msgid "Search"
+msgstr "Поиск"
 
 msgid "Add"
 msgstr "Добавить"
@@ -28,8 +49,23 @@ msgstr "Добавлено"
 msgid "Delete"
 msgstr "Удалить"
 
-msgid "Stations"
-msgstr "Остановки"
+msgid "Bus location display mode"
+msgstr "Как отображать текущее местоположение"
+
+msgid "Between ... and ..."
+msgstr "Между ... и ..."
+
+msgid "Goes to ..."
+msgstr "В пути к ..."
+
+msgid "Now at ..."
+msgstr "Сейчас на ..."
+
+msgid "Notices"
+msgstr "Примечания"
+
+msgid "This applications uses publicly-available information from bus62.ru, and it provides only countries and cities that are connected to this system."
+msgstr "Это приложение получает публично-доступные сведения с ресурса bus62.ru, и предоставляет только информацию из стран/городов, подключенных к их системе."
 
 msgid "Like this application? Consider to support their development with a small donation: "
 msgstr "Нравится это приложение? Рассмотрите возможность поддержать его материально: "

@@ -11,6 +11,12 @@ import {StationDeleteButton, StationIcon} from "./ui/stationUiParts";
 import {BaseListItem, ListItemText} from "../lib/mmk/setting/ListItem";
 import {FloatingActionButtonHint} from "../lib/mmk/setting/Hints";
 
+/**
+ * Stations tab content.
+ *
+ * @param ctx App context
+ * @returns {*} View
+ */
 export function StationsSetup(ctx) {
     const state = new StateManager(ctx, "st_setup");
     const [newPaneVisible, setNewPaneVisible] = state.useState(false);
@@ -29,6 +35,12 @@ export function StationsSetup(ctx) {
     ])
 }
 
+/**
+ * Selected stations list.
+ *
+ * @param ctx App context
+ * @returns {*|*[]} View(s)
+ */
 function SelectedStations(ctx) {
     const state = new StateManager(ctx, "st_list");
     const [stations, setStations] = state.useSetting("stations", []);

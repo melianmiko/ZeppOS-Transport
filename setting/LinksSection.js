@@ -2,16 +2,15 @@ import {gettext as t} from "i18n";
 import {TextRoot} from "../lib/mmk/setting/Layout";
 import {Link, Paragraph, Title} from "../lib/mmk/setting/Typography";
 
-export const URL_TO_COPY = {
-  style: {
-    userSelect: "text",
-    display: "block",
-    color: "#673AB7",
-  }
-}
-
+/**
+ * Links section on "About" tab
+ *
+ * @returns {*} Vuew
+ */
 export function LinksSection() {
     return TextRoot([
+        Title(t("Notices")),
+        Paragraph(t("This applications uses publicly-available information from bus62.ru, and it provides only countries and cities that are connected to this system.")),
         Title(t("Links")),
         Paragraph([
             t("Like this application? Consider to support their development with a small donation: "),

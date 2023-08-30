@@ -6,6 +6,12 @@ import {StationAddButton, StationIcon, stationsListContain} from "./ui/stationUi
 import {TextRoot} from "../lib/mmk/setting/Layout";
 import {Paragraph, Title} from "../lib/mmk/setting/Typography";
 
+/**
+ * Add station dialog. Appears when clicking "Add" button at first tab.
+ *
+ * @param ctx App context
+ * @returns {*} View
+ */
 export function AddStationDialog(ctx) {
     const state = new StateManager(ctx, "st_add_dial");
     const [query, setQuery] = state.useSetting("stations_query", "");
@@ -20,6 +26,11 @@ export function AddStationDialog(ctx) {
     ]);
 }
 
+/**
+ * Available stations list view
+ * @param ctx App context
+ * @returns {*} View
+ */
 function AvailableStations(ctx) {
     const state = new StateManager(ctx, "st_add_available");
     const [available, _] = state.useSetting("available_stations", []);

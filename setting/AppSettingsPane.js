@@ -4,7 +4,13 @@ import {Title} from "../lib/mmk/setting/Typography";
 import {StateManager} from "../lib/mmk/setting/StateManager";
 import {RadioListItem} from "../lib/mmk/setting/Forms";
 
-    export function AppSettingsPane(ctx) {
+/**
+ * App settings pane. Content of second tab.
+
+ * @param ctx App contet
+ * @returns {*[]} View(s)
+ */
+export function AppSettingsPane(ctx) {
     const state = new StateManager(ctx, "app_cfg");
     const [locMode, setLocMode] = state.useSetting("location_show_mode", "current");
     console.log(locMode);

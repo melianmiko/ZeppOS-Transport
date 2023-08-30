@@ -6,6 +6,12 @@ import {PrimaryButton} from "../lib/mmk/setting/Buttons";
 import {BottomSheet} from "../lib/mmk/setting/BottomSheet";
 import {CityPicker} from "./CityPicker";
 
+/**
+ * First run "Select city" popup
+ *
+ * @param ctx App context
+ * @returns {*} View
+ */
 export function PleaseSelectCityPopup(ctx) {
     const state = new StateManager(ctx, "sc_popup");
     const [loadLevel, setLoadLevel] = state.useSetting("rq_cities_load", 0);

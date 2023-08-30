@@ -13,6 +13,12 @@ import {AppSettingsPane} from "./AppSettingsPane";
 Theme.accentColor = "#673AB7";
 Theme.accentLightColor = "#ebe7ff";
 
+/**
+ * Main tab view
+ *
+ * @param ctx App context
+ * @returns {*} View
+ */
 function Home(ctx) {
   if(!ctx.settingsStorage.getItem("selected_city")) {
     return PleaseSelectCityPopup(ctx);
@@ -21,10 +27,13 @@ function Home(ctx) {
   return StationsSetup(ctx);
 }
 
+/**
+ * Main function
+ */
 AppSettingsPage({
   build(ctx) {
     const state = new StateManager(ctx, "root");
-    const [tab, setTab] = state.useState("stations")
+    const [tab, setTab] = state.useState("stations");
 
     // Trigger Side-Service to start
     const nowTag = (new Date()).toISOString().substring(0, 19);

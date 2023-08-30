@@ -5,6 +5,12 @@ import {StateManager} from "../lib/mmk/setting/StateManager";
 import {Title} from "../lib/mmk/setting/Typography";
 import {TextRoot} from "../lib/mmk/setting/Layout";
 
+/**
+ * City picker popup content.
+ *
+ * @param ctx App context
+ * @returns {*} View
+ */
 export function CityPicker(ctx) {
     const state = new StateManager(ctx, "sc_popup");
     const [loadLevel, setLoadLevel] = state.useSetting("rq_cities_load", 0);
@@ -13,7 +19,7 @@ export function CityPicker(ctx) {
     if(loadLevel < 2) return Spinner();
     return View({}, [
         TextRoot([
-            Title(t("Select city...")),
+            Title(t("Select city")),
         ]),
         ...cities.map((row) => EntryRow({
             label: row.name,
