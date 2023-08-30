@@ -112,7 +112,7 @@ class SideServiceHandler {
   settingChanged(key, oldValue, newValue) {
     switch(key) {
       case "selected_city":
-        return this.handleCityChange(newValue === oldValue);
+        return this.handleCityChange();
       case "rq_cities_load":
         return this.updateCitiesList(newValue);
       case "stations_query":
@@ -142,10 +142,8 @@ class SideServiceHandler {
     console.log("Cities list ready");
   }
 
-  async handleCityChange(isReallyChanged) {
+  async handleCityChange() {
     settings.settingsStorage.removeItem("available_stations");
-    if(!isReallyChanged) return;
-    console.log("City changed, wipe saved stations...");
     settings.settingsStorage.setItem("stations", "[]");
     this.dbStations = null;
   }
