@@ -38,6 +38,7 @@ for target_id in app_json["targets"]:
 
   # Misc files
   shutil.copy(common_assets / "icon.png", assets_dir / "icon.png")
+  shutil.copy(common_assets / "offline.png", assets_dir / "offline.png")
 
   # Icons
   if target_id in low_ram_targets:

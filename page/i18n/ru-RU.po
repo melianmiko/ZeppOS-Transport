@@ -36,3 +36,6 @@ msgstr "Прибывает"
 
 msgid "Nothing to show. Looks like this station is closed for nwo."
 msgstr "Ничего нет. Скорее всего эта остановка сейчас закрыта."
+
+msgid "Internet or your phone isn't available."
+msgstr "Нет подключения к сети."

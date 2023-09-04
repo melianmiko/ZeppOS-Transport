@@ -1,7 +1,7 @@
 import {ListScreen} from "../lib/mmk/ListScreen";
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from "../lib/mmk/UiParams";
 import {gettext as t} from "i18n";
-import {createSpinner} from "../lib/Utils";
+import {createOfflineScreen, createSpinner} from "../lib/Utils";
 
 const { config, messageBuilder } = getApp()._options.globalData
 
@@ -27,11 +27,17 @@ class StationInfoScreen extends ListScreen {
         messageBuilder.request({
             action: "get_station_info",
             id: data.id
-        }).then((d) => {
+        }, {timeout: 10000}).then((d) => {
+            if(d.error) {
+                this.deleteSpinner();
+                return createOfflineScreen(d.error);
+            }
             this.locationShowMode = d.showMode;
             this.buildUI(d.routes);
         }).catch((e) => {
             console.log(e);
+            this.deleteSpinner()
+            createOfflineScreen(t("Internet or your phone isn't available."));
         })
     }
 

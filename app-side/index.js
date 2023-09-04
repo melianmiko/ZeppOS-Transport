@@ -14,8 +14,11 @@ class SideServiceHandler {
     this.dbCitites = {};
     this.dbStations = null;
 
-    let showMode = settings.settingsStorage.getItem("location_show_mode");
-    showMode = !showMode ? "current" : JSON.parse(showMode);
+    let showMode = "current";
+    try {
+      showMode = JSON.parse(settings.settingsStorage.getItem("location_show_mode"));
+    } catch(e) {}
+
     this.locationShowMode = showMode;
   }
 
@@ -32,9 +35,6 @@ class SideServiceHandler {
     settings.settingsStorage.addListener("change", ({key, newValue, oldValue}) => {
       this.settingChanged(key, oldValue, newValue);
     });
-
-    if(!settings.settingsStorage.getItem("api_ident"))
-      this.setupIdentifiers();
   }
 
   async deviceRequest(ctx, payload) {
@@ -57,7 +57,6 @@ class SideServiceHandler {
       }
     });
 
-    console.log(11111, stations);
     ctx.response({
       data: stations
     })
@@ -67,7 +66,15 @@ class SideServiceHandler {
     const city = settings.settingsStorage.getItem("selected_city");
     console.log("Fetch information about station", id, "in", city);
 
-    let data = await this.get(`https://api9.bus62.ru/getStationForecastsAllTransport.php?city=${city}&sid=${id}`);
+    let data;
+    try {
+      data = await this.doApiRequest(`https://api9.bus62.ru/getStationForecastsAllTransport.php?city=${city}&sid=${id}`);
+    } catch(e) {
+      return ctx.response({
+        data: {error: e.message}
+      });
+    }
+
     const output = [];
     const addedNames = [];
 
@@ -92,23 +99,6 @@ class SideServiceHandler {
     });
   }
 
-  async setupIdentifiers() {
-    const deviceID = generateString(16);
-    const installationID = generateString(8);
-
-    console.log("Registering device ident...");
-    const resp = await fetch({
-      method: "GET",
-      url: `https://api9.bus62.ru/addStat.php?is=${installationID}&id=${deviceID}`,
-      headers: {
-        "User-Agent": `okhttp_${deviceID}`
-      }
-    });
-    console.log("Registration result:", resp);
-
-    settings.settingsStorage.setItem("api_ident", `${deviceID}_${installationID}`);
-  }
-
   settingChanged(key, oldValue, newValue) {
     switch(key) {
       case "selected_city":
@@ -126,7 +116,7 @@ class SideServiceHandler {
     if(newValue !== "1") return;
     console.log("Load list of cities...", newValue);
 
-    const data = await this.get("https://api9.bus62.ru/getAllCities.php");
+    const data = await this.doApiRequest("https://api9.bus62.ru/getAllCities.php");
     const availableCities = [];
     this.dbCitites = {};
     for(const row of data) {
@@ -169,22 +159,24 @@ class SideServiceHandler {
     const city = settings.settingsStorage.getItem("selected_city");
     console.log("Fetch stations in", city);
 
-    this.dbStations = await this.get(`https://api9.bus62.ru/getAllStations.php?city=${city}`);
-  }
-
-  getSavedStationIDS() {
-    return this.getSavedStations().map((r) => r.id);
+    this.dbStations = await this.doApiRequest(`https://api9.bus62.ru/getAllStations.php?city=${city}`);
   }
 
   getSavedStations() {
-    const stations = settings.settingsStorage.getItem("stations");
-    console.log(222222, settings.settingsStorage.toObject());
-    if(!stations || stations[0] !== "[") return [];
-    return JSON.parse(stations);
+    try {
+      const stations = settings.settingsStorage.getItem("stations");
+      return JSON.parse(stations);
+    } catch(e) {
+      console.log("Can't list stations", e);
+      return [];
+    }
   }
 
-  async get(url) {
+  async doApiRequest(url) {
     const ident = settings.settingsStorage.getItem("api_ident");
+    if(!ident)
+      await this.setupIdentifiers();
+
     const res = await fetch({
       method: "GET",
       url,
@@ -192,8 +184,31 @@ class SideServiceHandler {
         "User-Agent": `okhttp_${ident}`
       }
     });
+    if(res.status !== 200) throw new Error("Status code != 200");
     return typeof res.body === 'string' ? JSON.parse(res.body) : res.body;
   }
+
+  /**
+   * Generate new IDs and register them into API
+   * @returns {Promise<void>}
+   */
+  async setupIdentifiers() {
+    const deviceID = generateString(16);
+    const installationID = generateString(8);
+
+    console.log("Registering device ident...");
+    const resp = await fetch({
+      method: "GET",
+      url: `https://api9.bus62.ru/addStat.php?is=${installationID}&id=${deviceID}`,
+      headers: {
+        "User-Agent": `okhttp_${deviceID}`
+      }
+    });
+    console.log("Registration result:", resp);
+
+    settings.settingsStorage.setItem("api_ident", `${deviceID}_${installationID}`);
+  }
+
 }
 
 
