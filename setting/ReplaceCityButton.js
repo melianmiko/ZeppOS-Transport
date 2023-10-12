@@ -12,14 +12,14 @@ import {LOCATION_16} from "../lib/mmk/setting/Icons";
  */
 export function ReplaceCityButton(ctx) {
     const state = new StateManager(ctx, "rc_btn");
-    const [loadLevel, setLoadLevel] = state.useSetting("rq_cities_load", 0);
+    const [open, setOpen] = state.useState(false);
 
     return View({}, [
         OptionButtonWithIcon(state.get("selected_city_name"), LOCATION_16, () => {
-            setLoadLevel(1);
+            setOpen(true);
         }),
-        BottomSheet(loadLevel !== 0, () => setLoadLevel(0), [
-            CityPicker(ctx)
+        BottomSheet(open, () => setOpen(false), [
+            CityPicker(ctx, () => setOpen(false)),
         ]),
     ])
 }

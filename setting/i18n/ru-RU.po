@@ -13,6 +13,18 @@ msgstr "Справка"
 msgid "Select your city to begin"
 msgstr "Выберите ваш город, чтобы начать"
 
+msgid "Select data source"
+msgstr "Выберите источник данных"
+
+msgid "Different data sources handles different cities in different countries. Pick one which have your one."
+msgstr "Различные источники данных дают информацию о различных городах и странах. Выбирайте тот, в котором есть требуемый вам."
+
+msgid "Note: changing of city or data provider will drop currently selected stations"
+msgstr "Примечание: смена города или источника данных сбросит уже выбранные вами остановки"
+
+msgid "Change data source"
+msgstr "Другой источник"
+
 msgid "We need to know them to show available stations."
 msgstr "Нам нужно знать его, чтоб загрузить список остановок."
 

@@ -14,16 +14,16 @@ import {CityPicker} from "./CityPicker";
  */
 export function PleaseSelectCityPopup(ctx) {
     const state = new StateManager(ctx, "sc_popup");
-    const [loadLevel, setLoadLevel] = state.useSetting("rq_cities_load", 0);
+    const [open, setOpen] = state.useState(false);
 
     return CenteredPane([
         Title(t("Select your city to begin")),
         Paragraph(t("We need to know them to show available stations.")),
         PrimaryButton(t("Select city"), () => {
-            setLoadLevel(1)
+            setOpen(true);
         }),
-        BottomSheet(loadLevel !== 0, () => setLoadLevel(0), [
-            CityPicker(ctx)
-        ])
+        BottomSheet(open, () => setOpen(false), [
+            CityPicker(ctx, () => setOpen(false)),
+        ]),
     ])
 }

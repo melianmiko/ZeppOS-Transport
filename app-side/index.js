@@ -1,5 +1,5 @@
-import {generateString} from "./tools";
 import {MessageBuilder} from "../lib/zeppos/message";
+import { DataProviderFactory } from "./DataProviderFactory";
 
 const messageBuilder = new MessageBuilder();
 const TEMPORARY_KEYS = [
@@ -11,20 +11,22 @@ const TEMPORARY_KEYS = [
 
 class SideServiceHandler {
   constructor() {
+    this.provider = null;
     this.dbCitites = {};
     this.dbStations = null;
-
-    let showMode = "current";
-    try {
-      showMode = JSON.parse(settings.settingsStorage.getItem("location_show_mode"));
-    } catch(e) {}
-
-    this.locationShowMode = showMode;
+    this.locationShowMode = "current";
   }
 
+  /**
+   * Start side service
+   */
   start() {
     for(const key of TEMPORARY_KEYS)
       settings.settingsStorage.removeItem(key);
+
+    try {
+      this.locationShowMode = JSON.parse(settings.settingsStorage.getItem("location_show_mode"));
+    } catch(e) {}
 
     messageBuilder.listen(() => {});
     messageBuilder.on("request", (ctx) => {
@@ -37,6 +39,26 @@ class SideServiceHandler {
     });
   }
 
+  /**
+   * Initializa API data provider
+   */
+  async init() {
+    let provider = "bus62";
+    try {
+      provider = JSON.parse(settings.settingsStorage.getItem("data_provider"));
+    } catch(_) {}
+
+    console.log("Init with data provider", provider);
+    this.provider = await DataProviderFactory.getProvider(provider);
+  }
+
+  /**
+   * Handle request from device
+   * 
+   * @param {*} ctx 
+   * @param {*} payload 
+   * @returns 
+   */
   async deviceRequest(ctx, payload) {
     console.log("-----", payload);
     switch (payload.action) {
@@ -47,6 +69,38 @@ class SideServiceHandler {
     }
   }
 
+  /**
+   * Handle settigns change
+   * 
+   * @param {*} key 
+   * @param {*} oldValue 
+   * @param {*} newValue 
+   * @returns 
+   */
+  settingChanged(key, oldValue, newValue) {
+    switch(key) {
+      case "data_provider":
+        this.provider = null;
+        this.dbCitites = null;
+      case "selected_city":
+        settings.settingsStorage.removeItem("available_stations");
+        settings.settingsStorage.setItem("stations", "[]");
+        this.dbStations = null;
+        return;
+      case "rq_cities_load":
+        return this.updateCitiesList(newValue);
+      case "stations_query":
+        return this.queryStations(newValue);
+      case "location_show_mode":
+        this.locationShowMode = JSON.parse(newValue);
+    }
+  }
+
+  /**
+   * Handle list stations request from device
+   * 
+   * @param {*} ctx 
+   */
   async deviceListStations(ctx) {
     const stations = this.getSavedStations().map((row) => {
       return {
@@ -62,82 +116,42 @@ class SideServiceHandler {
     })
   }
 
+  /**
+   * Handle station info request from device.
+   * 
+   * @param {*} ctx 
+   * @param {*} id 
+   */
   async deviceStationInfo(ctx, id) {
     const city = settings.settingsStorage.getItem("selected_city");
     console.log("Fetch information about station", id, "in", city);
+    if(!this.provider) await this.init();
 
-    let data;
     try {
-      data = await this.doApiRequest(`https://api9.bus62.ru/getStationForecastsAllTransport.php?city=${city}&sid=${id}`);
+      ctx.response({
+        data: {
+          routes: await this.provider.getUpcomingBuses(city, id),
+          showMode: this.locationShowMode,
+        },
+      });
     } catch(e) {
-      return ctx.response({
-        data: {error: e.message}
+      ctx.response({
+        data: {
+          error: e.message,
+        }
       });
     }
-
-    const output = [];
-    const addedNames = [];
-
-    let name;
-    for(const row of data) {
-      name = `${row.rtype}-${row.rnum}`;
-      if(addedNames.indexOf(name) > -1 || row.arrt < 0) continue;
-      addedNames.push(name);
-      output.push({
-        name,
-        est: row.arrt,
-        goesTo: row.where,
-        current: row.last,
-      });
-    }
-
-    ctx.response({
-      data: {
-        routes: output,
-        showMode: this.locationShowMode,
-      },
-    });
   }
 
-  settingChanged(key, oldValue, newValue) {
-    switch(key) {
-      case "selected_city":
-        return this.handleCityChange();
-      case "rq_cities_load":
-        return this.updateCitiesList(newValue);
-      case "stations_query":
-        return this.queryStations(newValue);
-      case "location_show_mode":
-        this.locationShowMode = JSON.parse(newValue);
-    }
-  }
-
-  async updateCitiesList(newValue) {
-    if(newValue !== "1") return;
-    console.log("Load list of cities...", newValue);
-
-    const data = await this.doApiRequest("https://api9.bus62.ru/getAllCities.php");
-    const availableCities = [];
-    this.dbCitites = {};
-    for(const row of data) {
-      this.dbCitites[row.code] = row;
-      availableCities.push({
-        code: row.code,
-        name: row.name,
-      })
-    }
-
-    settings.settingsStorage.setItem("available_cities", JSON.stringify(availableCities));
-    settings.settingsStorage.setItem("rq_cities_load", "2")
-    console.log("Cities list ready");
-  }
-
+  /**
+   * Handle city change
+   */
   async handleCityChange() {
-    settings.settingsStorage.removeItem("available_stations");
-    settings.settingsStorage.setItem("stations", "[]");
-    this.dbStations = null;
   }
 
+  /**
+   * Handle query stations request
+   */
   async queryStations(query) {
     if(!this.dbStations) await this.fetchStations();
     query = JSON.parse(query).toLowerCase();
@@ -155,60 +169,44 @@ class SideServiceHandler {
     console.log("Set", "available_stations", available);
   }
 
+  /**
+   * Handle fetch stations request
+   */
   async fetchStations() {
     const city = settings.settingsStorage.getItem("selected_city");
     console.log("Fetch stations in", city);
 
-    this.dbStations = await this.doApiRequest(`https://api9.bus62.ru/getAllStations.php?city=${city}`);
+    if(!this.provider) await this.init();
+    this.dbStations = await this.provider.getStationsList(city);
   }
 
+  /**
+   * Handle update cities list request
+   */
+  async updateCitiesList(newValue) {
+    if(newValue !== "1") return;
+    console.log("Load list of cities...", newValue);
+
+    if(!this.provider) await this.init();
+    this.dbCitites = await this.provider.getCitiesList();
+
+    settings.settingsStorage.setItem("available_cities", JSON.stringify(this.dbCitites));
+    settings.settingsStorage.setItem("rq_cities_load", "2")
+  }
+
+  /**
+   * Get list of saved stations
+   */
   getSavedStations() {
     try {
       const stations = settings.settingsStorage.getItem("stations");
+      if(!stations) return [];
       return JSON.parse(stations);
     } catch(e) {
       console.log("Can't list stations", e);
       return [];
     }
   }
-
-  async doApiRequest(url) {
-    const ident = settings.settingsStorage.getItem("api_ident");
-    if(!ident)
-      await this.setupIdentifiers();
-
-    const res = await fetch({
-      method: "GET",
-      url,
-      headers: {
-        "User-Agent": `okhttp_${ident}`
-      }
-    });
-    if(res.status !== 200) throw new Error("Status code != 200");
-    return typeof res.body === 'string' ? JSON.parse(res.body) : res.body;
-  }
-
-  /**
-   * Generate new IDs and register them into API
-   * @returns {Promise<void>}
-   */
-  async setupIdentifiers() {
-    const deviceID = generateString(16);
-    const installationID = generateString(8);
-
-    console.log("Registering device ident...");
-    const resp = await fetch({
-      method: "GET",
-      url: `https://api9.bus62.ru/addStat.php?is=${installationID}&id=${deviceID}`,
-      headers: {
-        "User-Agent": `okhttp_${deviceID}`
-      }
-    });
-    console.log("Registration result:", resp);
-
-    settings.settingsStorage.setItem("api_ident", `${deviceID}_${installationID}`);
-  }
-
 }
 
 

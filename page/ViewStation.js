@@ -77,20 +77,20 @@ class StationInfoScreen extends ListScreen {
         console.log(this.locationShowMode);
         switch(this.locationShowMode) {
             case "full":
-                return t("Between") + " " + row.current + " " + t("and") + " " + row.goesTo;
+                return t("Between") + " " + row.stationCurrent + " " + t("and") + " " + row.stationNext;
             case "goesTo":
-                return t("Goes to") + " " + row.goesTo;
+                return t("Goes to") + " " + row.stationNext;
             default: // current
-                return t("Now at") + " " + row.current;
+                return t("Now at") + " " + row.stationCurrent;
         }
     }
 
     buildRow(row) {
-        let est = Math.floor(row.est / 60);
+        let est = Math.floor(row.estArriveTime / 60);
         est = est < 1 ? t("Near")  : est + " " + t("min.");
         this.field({
             headline: row.name,
-            headlineColor: this.getColor(row.name.substring(0, 2)),
+            headlineColor: row.color,
             text: String(est),
         });
         this.text({
@@ -100,23 +100,6 @@ class StationInfoScreen extends ListScreen {
             topOffset: -16,
             bottomOffset: 16,
         })
-    }
-
-    getColor(tag) {
-        switch (tag) {
-            case "Тр":
-                return 0x4CAF50;
-            case "А-":
-            case "A-":
-                return 0xEF5350;
-            case "Т-":
-            case "T-":
-                return 0x26C6DA;
-            case "М-":
-                return 0xFFA726;
-            default:
-                return 0x999999;
-        }
     }
 }
 
