@@ -31,13 +31,13 @@ class HomeScreen extends ListScreen {
     buildUI(rows) {
         this.deleteSpinner();
 
-        this.row({
-            icon: "about.png",
-            text: t("About..."),
-            callback: () => hmApp.gotoPage({
-                url: "page/AboutScreen",
-            })
-        })
+        // this.row({
+        //     icon: "about.png",
+        //     text: t("About..."),
+        //     callback: () => hmApp.gotoPage({
+        //         url: "page/AboutScreen",
+        //     })
+        // })
         this.row({
             icon: "fontSize.png",
             text: t("Font size..."),

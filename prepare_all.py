@@ -65,7 +65,7 @@ for target_data in zepp_devices:
   # App.json
   app_json["targets"][target_id] = {
     "platforms": [],
-    **module,
+    "module": module
   }
 
   for i, source in enumerate(target_data["deviceSource"]):

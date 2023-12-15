@@ -14,19 +14,23 @@ export function DataProviderPicker(ctx) {
     const [_, setProvider] = state.useSetting("data_provider");
     const [__, setLoadLevel] = state.useSetting("rq_cities_load", 0);
 
-    return View({}, [
-        TextRoot([
-            Title(t("Select data source")),
-            Paragraph(t("Different data sources handles different cities in different countries. Pick one which have your one.")),
-            Paragraph(t("Note: changing of city or data provider will drop currently selected stations"), {color: "#FF9900"}),
-        ]),
-        Object.values(PROVIDERS).map((provider) => BaseListItem([
-            ListItemText(provider.name, provider.description),
-        ], () => {
-            setProvider(provider.id);
-            setLoadLevel(1);
-        }))
-    ]);
+    setProvider("bus62");
+    setLoadLevel(1);
+    return View({}, []);
+
+    // return View({}, [
+    //     TextRoot([
+    //         Title(t("Select data source")),
+    //         Paragraph(t("Different data sources handles different cities in different countries. Pick one which have your one.")),
+    //         Paragraph(t("Note: changing of city or data provider will drop currently selected stations"), {color: "#FF9900"}),
+    //     ]),
+    //     Object.values(PROVIDERS).map((provider) => BaseListItem([
+    //         ListItemText(provider.name, provider.description),
+    //     ], () => {
+    //         setProvider(provider.id);
+    //         setLoadLevel(1);
+    //     }))
+    // ]);
 }
 
 /**
@@ -43,9 +47,9 @@ export function CityPicker(ctx, callback) {
     if(loadLevel < 1) return DataProviderPicker(ctx);
     if(loadLevel < 2) return Spinner();
     return View({}, [
-        OptionButtonWithIcon(t("Change data source"), ARROW_BACK_16, () => {
-            setLoadLevel(0)
-        }),
+        // OptionButtonWithIcon(t("Change data source"), ARROW_BACK_16, () => {
+        //     setLoadLevel(0)
+        // }),
         TextRoot([
             Title(t("Select city")),
         ]),
