@@ -21,500 +21,537 @@
     }
   },
   "targets": {
-    "mi-band-7": {
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
+    "active_edge": {
+      "platforms": [
+        {
+          "name": "active_edge0",
+          "deviceSource": 8388864
         },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
+        {
+          "name": "active_edge1",
+          "deviceSource": 8388865
         }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
       },
-      "platforms": [
-        {
-          "name": "amazfit-band7-nfc",
-          "deviceSource": 252
-        },
-        {
-          "name": "amazfit-band7",
-          "deviceSource": 253
-        },
-        {
-          "name": "amazfit-band7-w",
-          "deviceSource": 254
-        },
-        {
-          "name": "l66",
-          "deviceSource": 260
-        },
-        {
-          "name": "l66w",
-          "deviceSource": 261
-        },
-        {
-          "name": "l66_1",
-          "deviceSource": 262
-        },
-        {
-          "name": "l66w_2",
-          "deviceSource": 263
-        },
-        {
-          "name": "l66_3",
-          "deviceSource": 264
-        },
-        {
-          "name": "l66_4",
-          "deviceSource": 265
-        },
-        {
-          "name": "l66_5",
-          "deviceSource": 266
-        }
-      ]
-    },
-    "gts-4-mini": {
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "app-side": {
+        "path": "app-side/index"
       },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "active": {
       "platforms": [
         {
-          "name": "gts-4-mini",
-          "deviceSource": 246
-        },
-        {
-          "name": "gts-4-mini-2",
-          "deviceSource": 247
+          "name": "active0",
+          "deviceSource": 8323328
         }
-      ]
-    },
-    "band-7": {
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
       },
-      "platforms": [
-        {
-          "name": "amazfit-band7-nfc",
-          "deviceSource": 252
-        },
-        {
-          "name": "amazfit-band7",
-          "deviceSource": 253
-        },
-        {
-          "name": "amazfit-band7-w",
-          "deviceSource": 254
-        }
-      ]
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
     },
-    "bip-5": {
+    "balance": {
       "platforms": [
         {
-          "name": "bip-5",
+          "name": "balance0",
+          "deviceSource": 8519936
+        },
+        {
+          "name": "balance1",
+          "deviceSource": 8519937
+        },
+        {
+          "name": "balance2",
+          "deviceSource": 8519939
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "bip5": {
+      "platforms": [
+        {
+          "name": "bip50",
           "deviceSource": 8454401
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "t-rex-ultra": {
+    "trex_ultra": {
       "platforms": [
         {
-          "name": "t-rex-ultra",
+          "name": "trex_ultra0",
           "deviceSource": 6553856
         },
         {
-          "name": "t-rex-ultra",
+          "name": "trex_ultra1",
           "deviceSource": 6553857
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
-      }
-    },
-    "gtr-mini": {
-      "platforms": [
-        {
-          "name": "gtr-mini",
-          "deviceSource": 250
-        },
-        {
-          "name": "gtr-mini-2",
-          "deviceSource": 251
-        }
-      ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
-      }
-    },
-    "gtr-4": {
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
       },
-      "platforms": [
-        {
-          "name": "gtr-4",
-          "deviceSource": 7930112
-        },
-        {
-          "name": "gtr-4-2",
-          "deviceSource": 7930113
-        }
-      ]
-    },
-    "gts-4": {
-      "platforms": [
-        {
-          "name": "gts-4",
-          "deviceSource": 7995648
-        },
-        {
-          "name": "gts-4-2",
-          "deviceSource": 7995649
-        }
-      ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
-      }
-    },
-    "falcon": {
-      "platforms": [
-        {
-          "name": "falcon",
-          "deviceSource": 414
-        },
-        {
-          "name": "falcon-2",
-          "deviceSource": 415
-        }
-      ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
     "cheetah": {
       "platforms": [
         {
-          "name": "cheetah",
+          "name": "cheetah0",
           "deviceSource": 8192256
         },
         {
-          "name": "cheetah-2",
+          "name": "cheetah1",
           "deviceSource": 8192257
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "cheetah-pro": {
+    "cheetah_pro": {
       "platforms": [
         {
-          "name": "cheetah-pro",
+          "name": "cheetah_pro0",
           "deviceSource": 8126720
         },
         {
-          "name": "cheetah-pro-2",
+          "name": "cheetah_pro1",
           "deviceSource": 8126721
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "cheetah-square": {
+    "cheetah_square": {
       "platforms": [
         {
-          "name": "cheetah-square",
+          "name": "cheetah_square0",
           "deviceSource": 8257793
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "gtr-3-pro": {
+    "gtr_mini": {
       "platforms": [
         {
-          "name": "gtr3pro",
+          "name": "gtr_mini0",
+          "deviceSource": 250
+        },
+        {
+          "name": "gtr_mini1",
+          "deviceSource": 251
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "gtr4": {
+      "platforms": [
+        {
+          "name": "gtr40",
+          "deviceSource": 7930112
+        },
+        {
+          "name": "gtr41",
+          "deviceSource": 7930113
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "gts4": {
+      "platforms": [
+        {
+          "name": "gts40",
+          "deviceSource": 7995648
+        },
+        {
+          "name": "gts41",
+          "deviceSource": 7995649
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "gts4mini": {
+      "platforms": [
+        {
+          "name": "gts4mini0",
+          "deviceSource": 246
+        },
+        {
+          "name": "gts4mini1",
+          "deviceSource": 247
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "Falcon": {
+      "platforms": [
+        {
+          "name": "Falcon0",
+          "deviceSource": 414
+        },
+        {
+          "name": "Falcon1",
+          "deviceSource": 415
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "band7": {
+      "platforms": [
+        {
+          "name": "band70",
+          "deviceSource": 252
+        },
+        {
+          "name": "band71",
+          "deviceSource": 253
+        },
+        {
+          "name": "band72",
+          "deviceSource": 254
+        }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "gtr3pro": {
+      "platforms": [
+        {
+          "name": "gtr3pro0",
           "deviceSource": 229
         },
         {
-          "name": "gtr3pro-2",
+          "name": "gtr3pro1",
           "deviceSource": 230
         },
         {
-          "name": "gtr3pro-3",
+          "name": "gtr3pro2",
           "deviceSource": 6095106
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "gtr-3": {
+    "gtr3": {
       "platforms": [
         {
-          "name": "gtr3",
+          "name": "gtr30",
           "deviceSource": 226
         },
         {
-          "name": "gtr3-2",
+          "name": "gtr31",
           "deviceSource": 227
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "gts-3": {
+    "gts3": {
       "platforms": [
         {
-          "name": "gts3",
+          "name": "gts30",
           "deviceSource": 224
         },
         {
-          "name": "gts3-2",
+          "name": "gts31",
           "deviceSource": 225
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
-        },
-        "app-side": {
-          "path": "app-side/index"
-        },
-        "setting": {
-          "path": "setting/index"
-        }
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     },
-    "t-rex-2": {
+    "trex2": {
       "platforms": [
         {
-          "name": "t-rex-2",
+          "name": "trex20",
           "deviceSource": 418
         },
         {
-          "name": "t-rex-2-2",
+          "name": "trex21",
           "deviceSource": 419
         }
       ],
-      "module": {
-        "page": {
-          "pages": [
-            "page/HomeScreen",
-            "page/ViewStation",
-            "page/FontSizeSetupScreen",
-            "page/AboutScreen",
-            "page/DonateScreen"
-          ]
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
+      }
+    },
+    "mi_band7": {
+      "platforms": [
+        {
+          "name": "mi_band70",
+          "deviceSource": 260
         },
-        "app-side": {
-          "path": "app-side/index"
+        {
+          "name": "mi_band71",
+          "deviceSource": 261
         },
-        "setting": {
-          "path": "setting/index"
+        {
+          "name": "mi_band72",
+          "deviceSource": 262
+        },
+        {
+          "name": "mi_band73",
+          "deviceSource": 263
+        },
+        {
+          "name": "mi_band74",
+          "deviceSource": 264
+        },
+        {
+          "name": "mi_band75",
+          "deviceSource": 265
+        },
+        {
+          "name": "mi_band76",
+          "deviceSource": 266
         }
+      ],
+      "page": {
+        "pages": [
+          "page/HomeScreen",
+          "page/ViewStation",
+          "page/FontSizeSetupScreen",
+          "page/AboutScreen",
+          "page/DonateScreen"
+        ]
+      },
+      "app-side": {
+        "path": "app-side/index"
+      },
+      "setting": {
+        "path": "setting/index"
       }
     }
   },

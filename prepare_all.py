@@ -1,22 +1,26 @@
 from pathlib import Path
+from PIL import Image
 import json
 import shutil
 import os
+import requests
 
 project = Path(".").resolve()
 common_assets = project / "assets" / "common"
 
-low_ram_targets = ["band-7", "mi-band-7"]
-
-pages = [
-    "HomeScreen",
-    "ViewStation",
-    "FontSizeSetupScreen",
-    "AboutScreen",
-    "DonateScreen",
-]
+print("Loading zepp devices list...")
+zepp_devices = requests.get("https://raw.githubusercontent.com/melianmiko/ZeppOS-DevicesList/main/zepp_devices.json").json()
 
 module = {
+  "page": {
+    "pages": [
+      "page/HomeScreen",
+      "page/ViewStation",
+      "page/FontSizeSetupScreen",
+      "page/AboutScreen",
+      "page/DonateScreen"
+    ]
+  },
   "app-side": {
     "path": "app-side/index"
   },
@@ -30,18 +34,21 @@ with open("app.json", "r") as f:
 
 
 # Prepare assets
-for target_id in app_json["targets"]:
+app_json["targets"] = {}
+for target_data in zepp_devices:
+  target_id = target_data["id"]
   assets_dir = project / "assets" / target_id
   if assets_dir.is_dir():
     shutil.rmtree(assets_dir)
   assets_dir.mkdir()
 
-  # Misc files
-  shutil.copy(common_assets / "icon.png", assets_dir / "icon.png")
-  shutil.copy(common_assets / "offline.png", assets_dir / "offline.png")
+  # Icon
+  i = Image.open(common_assets / "icon.png")
+  i.thumbnail((target_data['iconSize'], target_data['iconSize']))
+  i.save(assets_dir / "icon.png")
 
   # Icons
-  if target_id in low_ram_targets:
+  if target_data["screenShape"] == "band":
     icon_size = 24
     shutil.copy(common_assets / "qr_small.png", assets_dir / "donate.png")
     shutil.copy(common_assets / "spinner.png", assets_dir / "spinner.png")
@@ -50,17 +57,22 @@ for target_id in app_json["targets"]:
     shutil.copy(common_assets / "qr_normal.png", assets_dir / "donate.png")
     shutil.copytree(common_assets / "spinner", assets_dir / "spinner")
 
+  shutil.copy(common_assets / "offline.png", assets_dir / "offline.png")
   shutil.copytree(common_assets / str(icon_size) / "stations", assets_dir / "stations")
   shutil.copy(common_assets / str(icon_size) / "fontSize.png", assets_dir / "fontSize.png")
   shutil.copy(common_assets / str(icon_size) / "about.png", assets_dir / "about.png")
 
   # App.json
-  app_json["targets"][target_id]["module"] = {
-    "page": {
-      "pages": [f"page/{i}" for i in pages]
-    },
-    **module
+  app_json["targets"][target_id] = {
+    "platforms": [],
+    **module,
   }
+
+  for i, source in enumerate(target_data["deviceSource"]):
+    app_json["targets"][target_id]["platforms"].append({
+      "name": f"{target_id}{i}",
+      "deviceSource": source
+    })
 
 with open("app.json", "w") as f:
   f.write(json.dumps(app_json, indent=2))
