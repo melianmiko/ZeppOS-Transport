@@ -5,8 +5,8 @@
     "appName": "Transport",
     "appType": "app",
     "version": {
-      "code": 5,
-      "name": "1.3.0"
+      "code": 6,
+      "name": "1.4.0"
     },
     "icon": "icon.png",
     "vender": "melianmiko",
@@ -55,6 +55,10 @@
         {
           "name": "active0",
           "deviceSource": 8323328
+        },
+        {
+          "name": "active1",
+          "deviceSource": 8323329
         }
       ],
       "module": {
@@ -112,7 +116,44 @@
       "platforms": [
         {
           "name": "bip50",
+          "deviceSource": 8454400
+        },
+        {
+          "name": "bip51",
           "deviceSource": 8454401
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "bip5unity": {
+      "platforms": [
+        {
+          "name": "bip5unity0",
+          "deviceSource": 8782081
+        },
+        {
+          "name": "bip5unity1",
+          "deviceSource": 8782088
+        },
+        {
+          "name": "bip5unity2",
+          "deviceSource": 8782089
         }
       ],
       "module": {
@@ -303,6 +344,35 @@
         }
       }
     },
+    "gtr4le": {
+      "platforms": [
+        {
+          "name": "gtr4le0",
+          "deviceSource": 7864576
+        },
+        {
+          "name": "gtr4le1",
+          "deviceSource": 7864577
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
     "gts4": {
       "platforms": [
         {
@@ -361,14 +431,14 @@
         }
       }
     },
-    "Falcon": {
+    "falcon": {
       "platforms": [
         {
-          "name": "Falcon0",
+          "name": "falcon0",
           "deviceSource": 414
         },
         {
-          "name": "Falcon1",
+          "name": "falcon1",
           "deviceSource": 415
         }
       ],
@@ -523,6 +593,39 @@
         {
           "name": "trex21",
           "deviceSource": 419
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "trex3": {
+      "platforms": [
+        {
+          "name": "trex30",
+          "deviceSource": 8716544
+        },
+        {
+          "name": "trex31",
+          "deviceSource": 8716545
+        },
+        {
+          "name": "trex32",
+          "deviceSource": 8716547
         }
       ],
       "module": {
