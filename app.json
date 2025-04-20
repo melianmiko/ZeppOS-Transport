@@ -6,7 +6,7 @@
     "appType": "app",
     "version": {
       "code": 6,
-      "name": "1.4.0"
+      "name": "1.4.1"
     },
     "icon": "icon.png",
     "vender": "melianmiko",
@@ -79,6 +79,59 @@
         }
       }
     },
+    "active_2": {
+      "platforms": [
+        {
+          "name": "active_20",
+          "deviceSource": 8913152
+        },
+        {
+          "name": "active_21",
+          "deviceSource": 8913153
+        },
+        {
+          "name": "active_22",
+          "deviceSource": 8913155
+        },
+        {
+          "name": "active_23",
+          "deviceSource": 8913159
+        },
+        {
+          "name": "active_24",
+          "deviceSource": 10092800
+        },
+        {
+          "name": "active_25",
+          "deviceSource": 10092801
+        },
+        {
+          "name": "active_26",
+          "deviceSource": 10092803
+        },
+        {
+          "name": "active_27",
+          "deviceSource": 10092807
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
     "balance": {
       "platforms": [
         {
@@ -121,6 +174,39 @@
         {
           "name": "bip51",
           "deviceSource": 8454401
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "bip6": {
+      "platforms": [
+        {
+          "name": "bip60",
+          "deviceSource": 9765120
+        },
+        {
+          "name": "bip61",
+          "deviceSource": 9765121
+        },
+        {
+          "name": "bip62",
+          "deviceSource": 10158337
         }
       ],
       "module": {
