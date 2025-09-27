@@ -5,8 +5,8 @@
     "appName": "Transport",
     "appType": "app",
     "version": {
-      "code": 6,
-      "name": "1.4.1"
+      "code": 8,
+      "name": "1.5.0"
     },
     "icon": "icon.png",
     "vender": "melianmiko",
@@ -112,6 +112,10 @@
         {
           "name": "active_27",
           "deviceSource": 10092807
+        },
+        {
+          "name": "active_28",
+          "deviceSource": 10617091
         }
       ],
       "module": {
@@ -327,6 +331,10 @@
         {
           "name": "cheetah_pro1",
           "deviceSource": 8126721
+        },
+        {
+          "name": "cheetah_pro2",
+          "deviceSource": 8126727
         }
       ],
       "module": {
@@ -410,6 +418,10 @@
         {
           "name": "gtr41",
           "deviceSource": 7930113
+        },
+        {
+          "name": "gtr42",
+          "deviceSource": 9437441
         }
       ],
       "module": {
@@ -497,6 +509,10 @@
         {
           "name": "gts4mini1",
           "deviceSource": 247
+        },
+        {
+          "name": "gts4mini2",
+          "deviceSource": 9502977
         }
       ],
       "module": {
@@ -592,6 +608,10 @@
         {
           "name": "gtr3pro2",
           "deviceSource": 6095106
+        },
+        {
+          "name": "gtr3pro3",
+          "deviceSource": 242
         }
       ],
       "module": {
@@ -761,6 +781,175 @@
         {
           "name": "mi_band76",
           "deviceSource": 266
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "balance2": {
+      "platforms": [
+        {
+          "name": "balance20",
+          "deviceSource": 9568512
+        },
+        {
+          "name": "balance21",
+          "deviceSource": 9568513
+        },
+        {
+          "name": "balance22",
+          "deviceSource": 9568515
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "balance2_xt": {
+      "platforms": [
+        {
+          "name": "balance2_xt0",
+          "deviceSource": 10486019
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "active_2_square": {
+      "platforms": [
+        {
+          "name": "active_2_square0",
+          "deviceSource": 9830656
+        },
+        {
+          "name": "active_2_square1",
+          "deviceSource": 9830657
+        },
+        {
+          "name": "active_2_square2",
+          "deviceSource": 9830659
+        },
+        {
+          "name": "active_2_square3",
+          "deviceSource": 10223872
+        },
+        {
+          "name": "active_2_square4",
+          "deviceSource": 10223873
+        },
+        {
+          "name": "active_2_square5",
+          "deviceSource": 10223875
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "trex3pro48": {
+      "platforms": [
+        {
+          "name": "trex3pro480",
+          "deviceSource": 10551552
+        },
+        {
+          "name": "trex3pro481",
+          "deviceSource": 10551553
+        },
+        {
+          "name": "trex3pro482",
+          "deviceSource": 10551555
+        }
+      ],
+      "module": {
+        "page": {
+          "pages": [
+            "page/HomeScreen",
+            "page/ViewStation",
+            "page/FontSizeSetupScreen",
+            "page/AboutScreen",
+            "page/DonateScreen"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        },
+        "setting": {
+          "path": "setting/index"
+        }
+      }
+    },
+    "trex3pro44": {
+      "platforms": [
+        {
+          "name": "trex3pro440",
+          "deviceSource": 10682624
+        },
+        {
+          "name": "trex3pro441",
+          "deviceSource": 10682625
+        },
+        {
+          "name": "trex3pro442",
+          "deviceSource": 10682627
         }
       ],
       "module": {
